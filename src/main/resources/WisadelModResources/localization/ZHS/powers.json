@@ -1,0 +1,20 @@
+{
+  "WisadelMod:AncestorPower": {
+    "NAME": "死魂灵",
+    "DESCRIPTIONS": [
+      "每拥有一层 #y死魂灵 ，在回合开始会给予自身 #b3层格挡 和 NL 对随机敌人造成 #b2点伤害 。"
+    ]
+  },
+  "WisadelMod:SFPower": {
+    "NAME": "充能",
+    "DESCRIPTIONS": [
+      "每拥有一层充能会在回合结束时给予 #b3层格挡 NL 当 #y充能 层数为0时 ，在回合开始会给予自身 #b3层力量和敏捷 。"
+    ]
+  },
+  "WisadelMod:TNTPower": {
+    "NAME": "土豆地雷",
+    "DESCRIPTIONS": [
+      "当土豆地雷层数为0时，对敌人造成 #b30点伤害 。"
+    ]
+  }
+}

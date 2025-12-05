@@ -1,0 +1,16 @@
+wisadelmod\cards\JingXiaHeZi.class
+wisadelmod\cards\Defend.class
+wisadelmod\cards\HongtK.class
+wisadelmod\relics\MyRelic.class
+wisadelmod\power\TNTPower.class
+wisadelmod\helpers\ModHelper.class
+wisadelmod\cards\SiHunLing.class
+wisadelmod\cards\BaoLieLiMing.class
+wisadelmod\cards\SheFu.class
+wisadelmod\characters\MyCharacter.class
+wisadelmod\power\AncestorPower.class
+wisadelmod\power\SFPower.class
+wisadelmod\characters\MyCharacter$PlayerColorEnum.class
+wisadelmod\modcore\WisadelMod.class
+wisadelmod\cards\Strike.class
+wisadelmod\characters\MyCharacter$PlayerLibraryEnum.class

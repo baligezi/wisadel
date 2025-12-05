@@ -1,0 +1,33 @@
+{
+  "WisadelMod:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": " 造成!D! 点伤害。"
+  },
+  "WisadelMod:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点 格挡。 "
+  },
+  "WisadelMod:SheFu": {
+    "NAME": "设伏",
+    "DESCRIPTION": "获得!M! 层 充能。",
+    "UPGRADE_DESCRIPTION": "获得!M! 层 充能。"
+  },
+  "WisadelMod:SiHunLing": {
+    "NAME": "死魂灵",
+    "DESCRIPTION": "获得!M! 层死魂灵。"
+  },
+  "WisadelMod:HongtK": {
+    "NAME": "红桃K",
+    "DESCRIPTION": " 对目标造成!D! 点伤害。"
+  },
+  "WisadelMod:JingXiaHeZi": {
+    "NAME": "惊吓盒子",
+    "DESCRIPTION": " 给予目标!M! 层土豆地雷。 NL 消耗",
+    "UPGRADE_DESCRIPTION": " 给予目标!M!层 土豆地雷。"
+  },
+  "WisadelMod:BaoLieLiMing": {
+    "NAME": "爆裂黎明",
+    "DESCRIPTION": " 对指定目标 NL  造成!D! 点伤害， NL  其余目标受到一半伤害。  NL  * 能被多次升级。 ",
+    "UPGRADE_DESCRIPTION": " 对指定目标 NL  造成!D! 点伤害， NL  其余目标受到一半伤害。  NL  * 能被多次升级。 "
+  }
+}

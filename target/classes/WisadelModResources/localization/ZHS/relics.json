@@ -1,0 +1,9 @@
+{
+  "WisadelMod:MyRelic": {
+    "NAME": "W大头玩偶",
+    "FLAVOR": "看起来软软的很舒服",
+    "DESCRIPTIONS": [
+      "每场战斗开始时，给予 #b1 层死魂灵。"
+    ]
+  }
+}

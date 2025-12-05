@@ -1,0 +1,13 @@
+﻿{
+    "modid": "WisadelMod",
+    
+"name": "Wisadel",
+    
+"author_list": ["baligezi"],
+    
+"description": "",
+    
+"version": "0.0.1",
+
+"dependencies": ["basemod"]
+}
