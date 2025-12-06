@@ -35,7 +35,7 @@ public class SFPower extends AbstractPower {
         }else {
             this.amount = Amount;
         }   */
-        this.amount = Math.min(Amount, 3);
+        this.amount = Amount;
 
 
         // 添加一大一小两张能力图

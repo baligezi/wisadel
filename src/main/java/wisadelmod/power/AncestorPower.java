@@ -2,10 +2,7 @@ package wisadelmod.power;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -34,8 +31,7 @@ public class AncestorPower extends AbstractPower {
         this.owner = owner;
         this.type = PowerType.BUFF;
 
-        this.amount = Math.min(Amount, 3);
-
+        this.amount = Amount;
 
         // 添加一大一小两张能力图
         String path128 = "WisadelModResources/img/powers/ZuZong 84.png";
@@ -47,13 +43,25 @@ public class AncestorPower extends AbstractPower {
         this.updateDescription();
     }
 
+    // 重写叠加能力的方法，确保层数不超过3
+    @Override
+    public void stackPower(int stackAmount) {
+        // 计算叠加后的总层数
+        int newAmount = this.amount + stackAmount;
+        // 确保总层数不超过3
+        this.amount = Math.min(newAmount, 3);
+        // 更新描述
+        this.updateDescription();
+    }
+
     public int onAttacked(DamageInfo info, int damageAmount) {
         // 非荆棘伤害，非生命流失伤害，伤害来源不为空，伤害来源不是能力持有者本身，伤害大于0
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner && damageAmount > 0 && this.amount > 0) {
             // 能力闪烁一下
             this.flash();
             AbstractPlayer p = AbstractDungeon.player;
-            this.addToBot(new ApplyPowerAction(p, p, new AncestorPower(p, -1)));
+            // 减少1层能力
+            this.addToBot(new ReducePowerAction(p, p, AncestorPower.POWER_ID, 1));
         }
         return damageAmount;
     }

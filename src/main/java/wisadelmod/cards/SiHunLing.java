@@ -40,6 +40,16 @@ public class SiHunLing extends CustomCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new AncestorPower(p, 3)));
+        // 检查玩家当前已有多少层AncestorPower
+        AncestorPower existingPower = (AncestorPower)p.getPower(AncestorPower.POWER_ID);
+        int currentAmount = existingPower != null ? existingPower.amount : 0;
+
+        // 计算需要添加的层数，确保总层数不超过3
+        int amountToAdd = Math.max(0, 3 - currentAmount);
+
+        // 如果需要添加层数，则添加相应的AncestorPower
+        if (amountToAdd > 0) {
+            this.addToBot(new ApplyPowerAction(p, p, new AncestorPower(p, amountToAdd), amountToAdd));
+        }
     }
 }

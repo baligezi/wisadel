@@ -44,6 +44,6 @@ public class JingXiaHeZi extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, m, new TNTPower(m, 2), 2));
+        this.addToBot(new ApplyPowerAction(m, p, new TNTPower(m, 2), 2));
     }
 }

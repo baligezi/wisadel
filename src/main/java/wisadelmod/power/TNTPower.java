@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -29,13 +30,8 @@ public class TNTPower extends AbstractPower {
         this.owner = owner;
         this.type = PowerType.DEBUFF;
 
-        // 如果需要不能叠加的能力，只需将上面的Amount参数删掉，并把下面的Amount改成-1就行
-        /*  if (Amount > 3) {
-            this.amount = 3;
-        }else {
-            this.amount = Amount;
-        }   */
         this.amount = Math.min(Amount, 3);
+
 
 
         // 添加一大一小两张能力图
@@ -48,17 +44,29 @@ public class TNTPower extends AbstractPower {
         this.updateDescription();
     }
 
+    // 重写叠加能力的方法，确保层数不超过3
+    @Override
+    public void stackPower(int stackAmount) {
+        // 计算叠加后的总层数
+        int newAmount = this.amount + stackAmount;
+        // 确保总层数不超过3
+        this.amount = Math.min(newAmount, 3);
+        // 更新描述
+        this.updateDescription();
+    }
+
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
         AbstractMonster m = AbstractDungeon.getRandomMonster();
-        this.addToBot(new ApplyPowerAction(m, m, new TNTPower(m, -1), -1));
+        AbstractPlayer p = AbstractDungeon.player;
+        this.addToBot(new ReducePowerAction(m, p, TNTPower.POWER_ID, 1));
         if (this.amount == 0) {
             this.flash();
             if (m != null && !m.isDead && !m.isDying) {
-                this.addToBot(new DamageAction(m, new DamageInfo(null, 30, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                this.addToBot(new DamageAction(m, new DamageInfo(null, 30, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
             }
-            this.addToBot(new RemoveSpecificPowerAction(m, m, TNTPower.POWER_ID));
+            this.addToBot(new RemoveSpecificPowerAction(m, p, TNTPower.POWER_ID));
         }
     }
 
